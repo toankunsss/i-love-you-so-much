@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="live.css">
+<title>toanguyen</title>
+<style>
+    .text {
+        visibility: hidden;
+    }
+    .hearts{
+        font-size: 23px;
+        font-weight: bold;
+        position: fixed;
+        top: -1vh;
+        left: 0;
+       
+        animation: fall 1s ease-in infinite;
+    }
+    .text{
+        font-size: 150px;
+
+    }
+    @keyframes fall{
+        to{
+            transform: translateY(250vh);
+        }
+    }
+    @media(max-width:1080px){
+        .text{
+            font-size: 83px;
+        }
+    }
+    @media(max-width:900px){
+        .text{
+            font-size: 70px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="text"> <h1> My baby I love you so much forever you and I I love you oh~ I love you so much forever you and I </h1> </div>
+<audio src="y2mate (mp3cut.net).mp3" autoplay></audio>
+<script>
+    const text = document.querySelector('.text');
+    const textContent = text.textContent;
+    text.textContent = '';
+    
+    function revealText(index) {
+        setTimeout(() => {
+            text.textContent += textContent[index];
+            text.style.visibility = 'visible';
+            if (index < textContent.length - 1) {
+                revealText(index + 1);
+            } else {
+                hearts();
+                setInterval(hearts, 100);
+
+            }
+        }, 110); 
+    }
+
+    revealText(0);
+</script>
+<script>
+    function hearts(){
+        const container = document.querySelector('.text');
+        const creat = document.createElement('div');
+        creat.classList.add('hearts');
+        creat.innerHTML = `❤️`
+        creat.style.left=Math.random() * 100 + 'vw' ;
+        creat.style.animationDuration=Math.random()* 3 + 2 + 's';
+        container.appendChild(creat);
+    }
+
+</script>
+</body>
+</html>
